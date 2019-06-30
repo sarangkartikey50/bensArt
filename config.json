@@ -1,0 +1,33 @@
+{
+    "owner": "Sarang Kartikey",
+    "company-name": "Bensar Pvt. Ltd.",
+    "version": "0.1.0",
+    "configurations": {
+        "components": [
+            {
+                "component": "AppBar",
+                "type": "MINIMAL",
+                "custom": true,
+                "customizations": {
+                    "visibility": {
+                        "header": true,
+                        "header-icon": false,
+                        "navbar": false
+                    }
+                }
+            },
+            {
+                "component": "Landing",
+                "type": "Image",
+                "custom": false,
+                "customizations": {}
+            },
+            {
+                "component": "Footer",
+                "type": "List",
+                "custom": false,
+                "customizations": {}
+            }
+        ]
+    }
+}
