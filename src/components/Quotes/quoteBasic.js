@@ -5,10 +5,11 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
     paper: {
         width: '80%',
-        margin: '3em auto',
+        margin: '6em auto',
         padding: '2em',
-        background: theme.surface,
-        color: '#fff'
+        background: theme.background,
+        color: '#fff',
+        boxShadow: 'none'
     },
     quote: {
         fontFamily: 'GoogleSans',

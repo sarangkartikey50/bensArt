@@ -3,10 +3,10 @@
     "company-name": "Bensar Pvt. Ltd.",
     "version": "0.1.0",
     "theme": {
-        "background": "#0f111a",
-        "surface": "#21252b",
+        "background": "#121212",
+        "surface": "#1d1d1d",
         "textColor": "#fff",
-        "primary": "#4185F4",
+        "primary": "#bb86fc",
         "secondary": "#fff",
         "accentBackground": "#fafafa",
         "borderColor": "#696969"
@@ -41,6 +41,15 @@
                 "component": "QuoteBasic",
                 "import": {
                     "path": "./components/Quotes/quoteBasic"
+                },
+                "custom": false,
+                "customizations": {},
+                "style": {}
+            },
+            {
+                "component": "CardContainer",
+                "import": {
+                    "path": "./components/Cards/cardContainer"
                 },
                 "custom": false,
                 "customizations": {},
