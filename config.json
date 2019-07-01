@@ -2,11 +2,22 @@
     "owner": "Sarang Kartikey",
     "company-name": "Bensar Pvt. Ltd.",
     "version": "0.1.0",
+    "theme": {
+        "background": "#0f111a",
+        "surface": "#21252b",
+        "textColor": "#fff",
+        "primary": "#4185F4",
+        "secondary": "#fff",
+        "accentBackground": "#fafafa",
+        "borderColor": "#696969"
+    },
     "configurations": {
         "components": [
             {
-                "component": "AppBar",
-                "type": "MINIMAL",
+                "component": "AppBarBasic",
+                "import": {
+                    "path": "./components/AppBar/appBarBasic"
+                },
                 "custom": true,
                 "customizations": {
                     "visibility": {
@@ -14,19 +25,35 @@
                         "header-icon": false,
                         "navbar": false
                     }
-                }
+                },
+                "style": {}
             },
             {
-                "component": "Landing",
-                "type": "Image",
+                "component": "LandingBasic",
+                "import": {
+                    "path": "./components/Landing/landingBasic"
+                },
                 "custom": false,
-                "customizations": {}
+                "customizations": {},
+                "style": {}
             },
             {
-                "component": "Footer",
-                "type": "List",
+                "component": "QuoteBasic",
+                "import": {
+                    "path": "./components/Quotes/quoteBasic"
+                },
                 "custom": false,
-                "customizations": {}
+                "customizations": {},
+                "style": {}
+            },
+            {
+                "component": "FooterBasic",
+                "import": {
+                    "path": "./components/Footer/footerBasic"
+                },
+                "custom": false,
+                "customizations": {},
+                "style": {}
             }
         ]
     }
