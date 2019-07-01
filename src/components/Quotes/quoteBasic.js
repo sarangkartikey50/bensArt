@@ -11,9 +11,12 @@ const useStyles = makeStyles(theme => ({
         color: '#fff'
     },
     quote: {
-        fontSize: '1.3em',
         fontFamily: 'GoogleSans',
-        fontWeight: 500
+        textAlign: 'center'
+    },
+    author: {
+        marginTop: '1em',
+        textAlign: 'center'
     }
 }))
 
@@ -22,7 +25,8 @@ const QuoteBasic = (props) => {
     return (
         <div>
             <Paper className={classes.paper}>
-                <Typography className={classes.quote}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed fringilla mi. Fusce facilisis facilisis vulputate. Curabitur eu tincidunt dui. Proin rhoncus, arcu et rutrum commodo.</Typography>
+                <Typography variant='h4' className={classes.quote}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed fringilla mi.</Typography>
+                <Typography className={classes.author} component='p'>- Lorem Ipsum -</Typography>
             </Paper>
         </div>
     )
