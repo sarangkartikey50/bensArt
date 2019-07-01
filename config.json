@@ -47,9 +47,18 @@
                 "style": {}
             },
             {
-                "component": "CardContainer",
+                "component": "CardContainerBasic",
                 "import": {
-                    "path": "./components/Cards/cardContainer"
+                    "path": "./containers/cardContainerBasic"
+                },
+                "custom": false,
+                "customizations": {},
+                "style": {}
+            },
+            {
+                "component": "CardContainerComplex",
+                "import": {
+                    "path": "./containers/cardContainerComplex"
                 },
                 "custom": false,
                 "customizations": {},
