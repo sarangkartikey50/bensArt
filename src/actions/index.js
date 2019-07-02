@@ -1,8 +1,8 @@
-export default function dummyActionCreator(){
+export function updateComponentsData(data){
     return (dispatch) => {
         dispatch({
-            type: 'DUMMY_ACTION',
-            payload: 'Hello, React Developers.'
+            type: 'UPDATE_COMPONENTS_DATA',
+            payload: data
         });
     }
 }

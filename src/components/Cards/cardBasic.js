@@ -10,7 +10,9 @@ const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 300,
     background: theme.surface,
-    margin: "0 auto"
+    margin: "0 auto",
+    border: theme.border,
+    boxShadow: theme.boxShadow
   },
   text: {
     color: theme.textColor,

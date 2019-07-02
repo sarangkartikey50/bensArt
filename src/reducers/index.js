@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import dummyReducer from './dummyReducer';
+import dataReducer from './dataReducer';
 
 const rootReducer = combineReducers({
-    'dummyReducerState': dummyReducer
+    'applicationManager': dataReducer
 });
 
 export default rootReducer;

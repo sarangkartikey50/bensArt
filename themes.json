@@ -1,0 +1,20 @@
+{
+    "material-dark": {
+        "background": "#121212",
+        "surface": "#1d1d1d",
+        "textColor": "#fff",
+        "primary": "#bb86fc",
+        "secondary": "#fff",
+        "boxShadow": "auto",
+        "border": "1px solid #121212"
+    },
+    "material-light": {
+        "background": "#fff",
+        "surface": "#fff",
+        "textColor": "#333",
+        "primary": "#6400e0",
+        "secondary": "#333",
+        "boxShadow": "none",
+        "border": "1px solid #e0e0e0"
+    }
+} 

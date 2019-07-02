@@ -7,9 +7,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "@material-ui/core";
-import facebookIcon from "../../resources/icons/facebookIcon.svg";
-import twitterIcon from "../../resources/icons/twitterIcon.svg";
-import instagramIcon from "../../resources/icons/instagramIcon.svg";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -17,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     color: theme.textColor,
     borderRadius: 0,
     padding: 20,
-    boxShadow: "none"
+    boxShadow: theme.boxShadow,
+    border: theme.border
   },
   listHeader: {
     fontSize: 17,
@@ -32,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   grid: {
     width: "100%",
     margin: "0",
-    borderBottom: "1px solid " + theme.background
+    borderBottom: theme.border
   },
   footer: {
     fontSize: "14px",
@@ -183,7 +181,7 @@ const FooterBasic = props => {
             </List>
           </Grid>
         </Grid>
-        <Grid style={{ padding: "20px" }} container spacing={16}>
+        <Grid style={{ padding: "20px" }} container>
           <Grid item md={6}>
             <div className={classes.inline}>
               <Typography className={classes.footer} variant="h6">
@@ -205,7 +203,7 @@ const FooterBasic = props => {
           </Grid>
           <Grid item md={3} />
           <Grid item md={3}>
-            <Grid container spacing={24}>
+            <Grid container>
               <Grid item md={4}>
                 <svg
                   height={40}
@@ -213,7 +211,7 @@ const FooterBasic = props => {
                   focusable="false"
                   data-prefix="fab"
                   data-icon="instagram"
-                  class="svg-inline--fa fa-instagram fa-w-14"
+                  className="svg-inline--fa fa-instagram fa-w-14"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 448 512"
@@ -231,7 +229,7 @@ const FooterBasic = props => {
                   focusable="false"
                   data-prefix="fab"
                   data-icon="facebook"
-                  class="svg-inline--fa fa-facebook fa-w-16"
+                  className="svg-inline--fa fa-facebook fa-w-16"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -249,7 +247,7 @@ const FooterBasic = props => {
                   focusable="false"
                   data-prefix="fab"
                   data-icon="twitter"
-                  class="svg-inline--fa fa-twitter fa-w-16"
+                  className="svg-inline--fa fa-twitter fa-w-16"
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"

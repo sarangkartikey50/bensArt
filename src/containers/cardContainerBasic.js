@@ -15,7 +15,9 @@ const useStyles = makeStyles(theme => ({
     margin: "1em 2em",
     background: theme.surface,
     padding: "1em",
-    width: "fit-content"
+    width: "fit-content",
+    border: theme.border,
+    boxShadow: theme.boxShadow
   }
 }));
 

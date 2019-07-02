@@ -8,7 +8,6 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Button from '@material-ui/core/Button'
 
@@ -16,7 +15,9 @@ const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 300,
     background: theme.surface,
-    margin: '0 auto'
+    margin: '1em auto',
+    border: theme.border,
+    boxShadow: theme.boxShadow
   },
   media: {
     height: 0,
@@ -30,6 +31,12 @@ const useStyles = makeStyles(theme => ({
       color: theme.textColor,
       fontFamily: 'GoogleSans'
   },
+  title: {
+    fontSize: '15px',
+    fontFamily: 'GoogleSans',
+    fontWeight: 500,
+    margin: 0
+  },
   subHeader: {
       color: theme.textColor,
       fontFamily: 'GoogleSans',
@@ -41,38 +48,36 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CardComplex() {
+export default function CardComplex(props) {
   const classes = useStyles();
+  const { data } = props
   return (
     <Card className={classes.card}>
       <CardHeader
         className={classes.text}
         avatar={
-          <Avatar aria-label="Recipe" className={classes.avatar}>
+          data.cardHeader.avatar ? <Avatar aria-label="Recipe" className={classes.avatar}>
             S
-          </Avatar>
+          </Avatar> : null
         }
         action={
           <IconButton aria-label="Settings" className={classes.text}>
             <MoreVertIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader={<p className={classes.subHeader}>September 14, 2016</p>}
+        title={data.cardHeader.header ? <p className={classes.title}>{data.cardHeader.header}</p> : null}
+        subheader={ data.cardHeader.subHeader ? <p className={classes.subHeader}>data.cardHeader.subHeader</p> : null }
       />
-      <CardMedia
+      { data.cardImage ? <CardMedia
         className={classes.media}
-        image="https://cdn.dribbble.com/users/992274/screenshots/6242422/gadgets_in_the_life_kit8-net.png"
-        title="Paella dish"
-      />
+        image={data.cardImage}
+        title={data.cardHeader.header}
+      /> : null }
       <CardContent>
-        <Typography className={classes.text} variant="body2" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
-        </Typography>
+        <Typography className={classes.text} variant="body2" component="p">{data.cardBody.substring(0, 300)}...</Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Button className={classes.action}>Learn More</Button>
+        { data.cardAction ? <Button as='a' href={data.cardAction.url} className={classes.action}>{ data.cardAction.name }</Button> : null }
       </CardActions>
     </Card>
   );
