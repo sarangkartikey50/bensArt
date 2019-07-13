@@ -30,11 +30,11 @@ const App = (props) => {
 }
 export default connect(null, { updateComponentsData })(App)
 `
-fs.open('./src/containers/app.js', 'w', (err, file) => {
+fs.open('./src/containers/siteApp.js', 'w', (err, file) => {
     if(err) throw err
-    console.log('newApp.js created!')
+    console.log('site created!')
 })
-fs.writeFile('./src/containers/app.js', output, (err) => {
+fs.writeFile('./src/containers/siteApp.js', output, (err) => {
     if(err) throw err
-    console.log('newApp.js written succesfully!')
+    console.log('site written succesfully!')
 })

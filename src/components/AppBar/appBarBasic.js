@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import CameraSharpIcon from '@material-ui/icons/CameraSharp'
 import { connect } from 'react-redux'
+import Logo from '../../resources/images/logo.svg'
 
 const mapStateToProps = (state) => {
   return {
