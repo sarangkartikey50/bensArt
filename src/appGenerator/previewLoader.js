@@ -6,7 +6,7 @@ import DarkPreviewVideo from '../resources/videos/dark-preview-loader.gif'
 
 const useStyle = makeStyles(theme =>({
     video: {
-        height: 'calc(100vh - 150px)',
+        height: 'calc(100vh - 144px)',
         backgroundSize: 'cover',
         display: 'block',
         margin: '0 auto'

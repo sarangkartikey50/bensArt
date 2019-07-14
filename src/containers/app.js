@@ -1,10 +1,9 @@
 
-import React from 'react'
-import '../style/index.css'
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AppGeneratorContainer from '../appGenerator/appGeneratorContainer';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import SiteApp from './siteApp';
+import '../style/index.css';
 
 const App = (props) => {
     return (
@@ -25,9 +24,6 @@ const App = (props) => {
                 <AppGeneratorContainer />
             </div>
         </MuiThemeProvider>
-                </Route>
-                <Route path='/preview'>
-                    <SiteApp />
                 </Route>
             </Switch>
         </Router>

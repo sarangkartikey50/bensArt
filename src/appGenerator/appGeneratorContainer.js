@@ -10,6 +10,7 @@ import SideBar from './sideBar';
 
 const useStyle = makeStyles(theme => ({
     grid: {
+        minHeight: '100vh'
     },
     paper: {
         height: '100%',

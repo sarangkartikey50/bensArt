@@ -16,11 +16,13 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.post("/create-app", (req, res) => {
     try{
       configGenerator(req.body)
-      exec('npm run build', (error, stdout, stderr) => {
+      exec('lsof -ti:7000 | xargs kill && cd src/site/ && npm start', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             return;
           }
+          console.log(stdout)
+          console.log(stderr)
           res.send({
             status: 'success',
             stdout, stderr
@@ -72,11 +74,11 @@ const SiteApp = (props) => {
 }
 export default connect(null, { updateComponentsData })(SiteApp)
 `;
-  fs.open("./src/containers/siteApp.js", "w", (err, file) => {
+  fs.open("./src/site/src/containers/app.js", "w", (err, file) => {
     if (err) throw err;
     console.log("site created!");
   });
-  fs.writeFile("./src/containers/siteApp.js", output, err => {
+  fs.writeFile("./src/site/src/containers/app.js", output, err => {
     if (err) throw err;
     console.log("site written succesfully!");
   });
@@ -87,5 +89,9 @@ export default connect(null, { updateComponentsData })(SiteApp)
   fs.writeFile('./config.json', JSON.stringify(config, null, 2), err => {
       if (err) throw err
       console.log("config written successfully!")
+  })
+  fs.writeFile('./src/site/.env', `SKIP_PREFLIGHT_CHECK=true \nPORT=7000`, err => {
+    if (err) throw err
+    console.log('env set successfully!')
   })
 };
