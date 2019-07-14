@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 const useStyles = makeStyles(theme => ({
     paper: {
         width: '80%',
-        margin: '6em auto 0 auto',
-        padding: '2em 2em 8em 2em',
+        margin: '6em auto',
+        padding: '2em',
         background: theme.background,
         color: '#fff',
         boxShadow: 'none'

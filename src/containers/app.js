@@ -11,14 +11,17 @@ const App = (props) => {
         <Router>
             <Switch>
                 <Route exact path='/'>
-                <MuiThemeProvider theme={createMuiTheme({"background": "#fff",
-        "surface": "#fff",
-        "textColor": "#333",
-        "primary": "#6400e0",
-        "secondary": "#333",
-        "boxShadow": "none",
-        "border": "1px solid #e0e0e0"})}>
-            <div className='App' style={{background: '#fff'}}>
+                <MuiThemeProvider theme={createMuiTheme({
+        "background": "#121212",
+        "surface": "#1d1d1d",
+        "textColor": "#fff",
+        "primary": "#bb86fc",
+        "secondary": "#fff",
+        "boxShadow": "auto",
+        "searchColor": "#1d1d1d",
+        "componentBarBackground": "#121212",
+        "border": "1px solid #121212"})}>
+            <div className='App' style={{background: '#121212'}}>
                 <AppGeneratorContainer />
             </div>
         </MuiThemeProvider>

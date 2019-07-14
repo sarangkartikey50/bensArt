@@ -20,7 +20,12 @@ const useStyle = makeStyles(theme => ({
         flexGrow: 1,
         float: 'right',
         margin: '0 1em',
-        zIndex: 1
+        zIndex: 1,
+        color: theme.textColor
+    },
+    icon: {
+      color: theme.textColor,
+      cursor: 'pointer'
     }
 }))
 
@@ -66,13 +71,13 @@ function SideBar(props) {
     <div>
       <MenuList className={classes.sideBarMenu}>
         <MenuItem>
-          <SlideShowSharpIcon style={{cursor: 'pointer'}} onClick={showPreview} />
+          <SlideShowSharpIcon className={classes.icon} onClick={showPreview} />
         </MenuItem>
         <MenuItem>
-          <FormatColorFillSharpIcon />
+          <FormatColorFillSharpIcon className={classes.icon} />
         </MenuItem>
         <MenuItem>
-          <AddSharpIcon />
+          <AddSharpIcon className={classes.icon} />
         </MenuItem>
       </MenuList>
       <SideBarComponentsList componentsList={componentsList} setComponentsList={setComponentsList} />

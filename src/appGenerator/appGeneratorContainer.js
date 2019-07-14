@@ -10,12 +10,14 @@ import SideBar from './sideBar';
 
 const useStyle = makeStyles(theme => ({
     grid: {
-        height: 'calc(100vh - 65px)'
     },
     paper: {
         height: '100%',
         boxShadow: 'none',
-        border: '1px solid #efefef'
+        border: theme.border,
+        background: theme.surface,
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
     }
 }))
 

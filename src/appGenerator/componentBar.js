@@ -14,18 +14,20 @@ const useStyle = makeStyles(theme => ({
   paper: {
     width: '100%',
     boxShadow: "none",
-    background: "#fafafa",
+    background: theme.componentBarBackground,
     display: "inline-flex",
     alignItems: 'center'
   },
   sideBarMenu: {
     display: "inline-flex",
     float: "right",
-    margin: "-10px 1em"
+    margin: "-10px 1em",
+    color: theme.textColor
   },
   text: {
       flexGrow: 1,
-      marginLeft: '1em'
+      marginLeft: '1em',
+      color: theme.textColor
   },
   listItem: {
       padding: '4px 8px'

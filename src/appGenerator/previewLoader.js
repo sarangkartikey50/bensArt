@@ -1,19 +1,21 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from "@material-ui/core";
-import PreviewVideo from '../resources/videos/preview-loader.mp4'
+import LightPreviewVideo from '../resources/videos/light-preview-loader.gif'
+import DarkPreviewVideo from '../resources/videos/dark-preview-loader.gif'
 
 const useStyle = makeStyles(theme =>({
     video: {
-        backgroundImage: "url('https://cdn.dribbble.com/users/1568450/screenshots/5996914/teamwork_12.png')",
-        height: 600,
-        backgroundSize: 'contain',
+        height: 'calc(100vh - 150px)',
+        backgroundSize: 'cover',
         display: 'block',
         margin: '0 auto'
     },
     text: {
         textAlign: 'center',
-        fontSize: '20px'
+        fontSize: '20px',
+        color: theme.textColor,
+        padding: '1em'
     }
 }))
 
@@ -21,16 +23,12 @@ export default function PreviewLoader(props) {
   const classes = useStyle()
   return (
     <div>
-      <video
+      <div
         id="video"
-        playsinline="true"
-        muted="true"
-        autoplay="true"
-        loop="true"
         className={classes.video}
         data-silent="true"
-        src={PreviewVideo}
-      />
+        style={{backgroundImage: `url('${DarkPreviewVideo}')`}}
+      ></div>
       <Typography className={classes.text}>Please wait... Generating preview!</Typography>
     </div>
   );

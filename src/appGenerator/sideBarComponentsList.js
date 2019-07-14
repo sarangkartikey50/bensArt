@@ -9,9 +9,19 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles(theme => ({
   text: {
-    border: "1px solid #efefef",
+    border: theme.border,
     padding: 10,
-    borderRadius: 10
+    borderRadius: 10,
+    background: theme.background,
+    color: theme.textColor
+  },
+  icon: {
+    color: theme.textColor,
+    cursor: 'pointer'
+  },
+  drag: {
+    color: theme.textColor,
+    cursor: 'grabbing'
   }
 }));
 
@@ -32,11 +42,11 @@ export default function SideBarComponentsList(props) {
             return (
               <ListItem key={index}>
                 <IconButton>
-                  <DragIndicatorIcon />
+                  <DragIndicatorIcon className={classes.drag} />
                 </IconButton>
                 <ListItemText className={classes.text} primary={component} />
                 <IconButton aria-label="Delete">
-                  <RemoveCircleIcon onClick={() => updateComponentsList(component)} />
+                  <RemoveCircleIcon className={classes.icon} onClick={() => updateComponentsList(component)} />
                 </IconButton>
               </ListItem>
             );

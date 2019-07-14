@@ -12,8 +12,9 @@ import { IconButton } from "@material-ui/core";
 const useStyles = makeStyles(theme => ({
   avatar: {
     margin: 10,
-    width: 60,
-    height: 60
+    width: 50,
+    height: 50,
+    background: theme.surface
   },
   root: {
     flexGrow: 1
@@ -28,9 +29,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center"
   },
   appBar: {
-    background: theme.surface,
+    background: theme.background,
     color: theme.textColor,
-    boxShadow: "none"
+    boxShadow: "none",
   },
   button: {
     textTransform: "capitalize",
@@ -46,9 +47,9 @@ const useStyles = makeStyles(theme => ({
   search: {
     position: "relative",
     borderRadius: 0,
-    backgroundColor: fade("#fafafa", 1),
+    backgroundColor: fade(theme.searchColor, 1),
     "&:hover": {
-      backgroundColor: fade("#fafafa", 0.75)
+      backgroundColor: fade(theme.searchColor, 0.75)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -77,6 +78,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       width: 200
     }
+  },
+  menu: {
+    color: theme.textColor
   }
 }));
 function CustomAppBar(props) {
@@ -118,12 +122,11 @@ function CustomAppBar(props) {
           </div>
           <div className={classes.root} />
           <Avatar
-            alt="Sarang Kartikey"
-            src="https://cdn.dribbble.com/users/1418633/screenshots/5106121/hi-dribbble-studiotale.gif"
+            src="https://cdn.dribbble.com/users/1324146/screenshots/5819188/2_2x.jpg"
             className={classes.avatar}
           />
           <IconButton>
-            <MenuRoundedIcon />
+            <MenuRoundedIcon className={classes.menu} />
           </IconButton>
           {/* {data.items.map((item, index) => {
             return <Button key={index} as='a' href={item.url} className={classes.button} color="inherit">{item.name}</Button>
