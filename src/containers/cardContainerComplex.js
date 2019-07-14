@@ -13,7 +13,8 @@ const mapStateToProps = (state) => {
 
 const useStyles = makeStyles(theme => ({
   grid: {
-    margin: "2em auto 5em auto"
+    margin: "2em auto 0em auto",
+    paddingBottom: '5em'
   },
   header: {
     color: theme.textColor

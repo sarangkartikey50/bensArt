@@ -3,8 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import ComponentBar from "./componentBar";
 import { ComponentsMap } from "./componentsMap";
 import { connect } from "react-redux";
+import PreviewLoader from "./previewGenerator";
 const mapStateToProps = state => ({
-  componentsData: state.applicationManager.componentsData
+  componentsData: state.applicationManager.componentsData,
+  previewStatus: state.applicationManager.previewStatus
 });
 const useStyle = makeStyles(theme => ({
   root: {
@@ -15,6 +17,7 @@ function ComponentsContainer(props) {
   const classes = useStyle();
   const { componentsData } = props;
   if (!componentsData) return null;
+  if(props.previewStatus === 'STARTED') return <PreviewLoader />
   return (
     <div className={classes.root}>
       {Object.entries(componentsData).map(([component, data], index) => {

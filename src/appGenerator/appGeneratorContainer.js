@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react'
-import CustomAppBar from './customAppBar';
-import { makeStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-import SideBar from './sideBar';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateComponentsData } from '../actions';
 import ComponentsContainer from './componentsContainer';
-import { connect } from 'react-redux'
-import { updateComponentsData } from '../actions'
+import CustomAppBar from './customAppBar';
+import SideBar from './sideBar';
 
 const useStyle = makeStyles(theme => ({
     grid: {

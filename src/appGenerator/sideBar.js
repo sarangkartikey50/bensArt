@@ -6,33 +6,67 @@ import FormatColorFillSharpIcon from '@material-ui/icons/FormatColorFillSharp'
 import SlideShowSharpIcon from '@material-ui/icons/SlideshowSharp'
 import SideBarComponentsList from "./sideBarComponentsList";
 import { connect } from 'react-redux'
-import { updateComponentsData } from '../actions'
+import { updateComponentsData, updateComponentsConfig, createApp } from '../actions'
 import { ComponentsMap } from './componentsMap'
+
+const mapStateToProps = (state) => ({
+  componentsData: state.applicationManager.componentsData,
+  componentsConfig: state.applicationManager.componentsConfig
+})
 
 const useStyle = makeStyles(theme => ({
     sideBarMenu: {
         display: 'inline-flex',
         flexGrow: 1,
         float: 'right',
-        margin: '0 1em'
+        margin: '0 1em',
+        zIndex: 1
     }
 }))
 
 function SideBar(props) {
   const classes = useStyle()
-  const [componentsList, setComponentsList] = useState(['AppBarBasic', 'LandingBasic', 'QuoteBasic', 'CardContainerComplex', 'CardContainerTestimonial'])
+  const [componentsList, setComponentsList] = useState(['AppBarBasic', 'QuoteBasic', 'CardContainerTestimonial'])
   useEffect(() => {
     let data = {}
-    componentsList.forEach(component => {
+    const config = componentsList.map(component => {
       data[component] = ComponentsMap[component].initData
+      let obj = {
+        ...ComponentsMap[component],
+        component
+      }
+      delete obj.initData
+      return obj
     })
     props.updateComponentsData(data)
-  }, [componentsList, props])
+    props.updateComponentsConfig(config)
+  }, [componentsList])
+  const showPreview = () => {
+    let configJson = {
+      owner: 'Sarang Kartikey',
+      "company-name": 'Bensar Pvt. Ltd.',
+      version: '1.0.0',
+      theme: {
+        "background": "#121212",
+        "surface": "#1d1d1d",
+        "textColor": "#fff",
+        "primary": "#bb86fc",
+        "secondary": "#fff",
+        "boxShadow": "auto",
+        "border": "1px solid #121212"
+      },
+      configurations: {
+        components: props.componentsConfig
+      },
+      data: props.componentsData
+    }
+    props.createApp(configJson)
+  }
   return (
     <div>
       <MenuList className={classes.sideBarMenu}>
         <MenuItem>
-          <SlideShowSharpIcon />
+          <SlideShowSharpIcon style={{cursor: 'pointer'}} onClick={showPreview} />
         </MenuItem>
         <MenuItem>
           <FormatColorFillSharpIcon />
@@ -46,4 +80,4 @@ function SideBar(props) {
   );
 }
 
-export default connect(null, { updateComponentsData })(SideBar)
+export default connect(mapStateToProps, { updateComponentsData, updateComponentsConfig, createApp })(SideBar)
