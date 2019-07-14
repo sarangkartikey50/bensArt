@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography } from "@material-ui/core";
+import PreviewVideo from '../resources/videos/preview-loader.mp4'
 
 const useStyle = makeStyles(theme =>({
     video: {
@@ -28,7 +29,7 @@ export default function PreviewLoader(props) {
         loop="true"
         className={classes.video}
         data-silent="true"
-        src="https://cdn.dribbble.com/users/1568450/videos/12771/teamwork_12.mp4"
+        src={PreviewVideo}
       />
       <Typography className={classes.text}>Please wait... Generating preview!</Typography>
     </div>

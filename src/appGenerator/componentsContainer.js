@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ComponentBar from "./componentBar";
 import { ComponentsMap } from "./componentsMap";
 import { connect } from "react-redux";
-import PreviewLoader from "./previewGenerator";
+import PreviewLoader from "./previewLoader";
 const mapStateToProps = state => ({
   componentsData: state.applicationManager.componentsData,
   previewStatus: state.applicationManager.previewStatus

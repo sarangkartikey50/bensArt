@@ -20,7 +20,7 @@ axios.post('http://localhost:5000/create-app', body)
     if(res.data.status === 'success'){
         dispatch({type: 'UPDATE_PREVIEW_STATUS', payload: 'FINISHED'})
         window.open(
-            '/created-app',
+            '/preview',
             '_blank' // <- This is what makes it open in a new window.
         );
     } else {

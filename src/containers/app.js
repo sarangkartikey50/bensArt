@@ -23,7 +23,7 @@ const App = (props) => {
             </div>
         </MuiThemeProvider>
                 </Route>
-                <Route path='/created-app'>
+                <Route path='/preview'>
                     <SiteApp />
                 </Route>
             </Switch>
