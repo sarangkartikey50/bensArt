@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => {
   return {
-    data: state.applicationManager.componentsData.AppBarBasic
+    data: state.applicationManager.componentsData
   }
 }
 const useStyles = makeStyles(theme => ({
@@ -40,16 +40,16 @@ const useStyles = makeStyles(theme => ({
 }));
 function AppBarBasic(props) {
   const classes = useStyles();
-  const { data } = props
-  if(!data) return null
+  const { data, componentIndex } = props
+  if(!data[componentIndex]) return null
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <CameraSharpIcon /> <span className={classes.titleText}>{data.headerText}</span>
+            <CameraSharpIcon /> <span className={classes.titleText}>{data[componentIndex].data.headerText}</span>
           </Typography>
-          {data.items.map((item, index) => {
+          {data[componentIndex].data.items.map((item, index) => {
             return <Button key={index} as='a' href={item.url} className={classes.button} color="inherit">{item.name}</Button>
           })}
         </Toolbar>

@@ -28,9 +28,9 @@ const useStyle = makeStyles(theme => ({
 export default function SideBarComponentsList(props) {
   const classes = useStyle();
   const { componentsList, setComponentsList } = props;
-  const updateComponentsList = (removedComponent) => {
-    const newComponentsList = componentsList.filter(component => {
-      return !(component === removedComponent)
+  const updateComponentsList = (removedComponentIndex) => {
+    const newComponentsList = componentsList.filter((component, index) => {
+      return !(index === removedComponentIndex)
     })
     setComponentsList(newComponentsList)
   }
@@ -45,8 +45,8 @@ export default function SideBarComponentsList(props) {
                   <DragIndicatorIcon className={classes.drag} />
                 </IconButton>
                 <ListItemText className={classes.text} primary={component} />
-                <IconButton aria-label="Delete">
-                  <RemoveCircleIcon className={classes.icon} onClick={() => updateComponentsList(component)} />
+                <IconButton aria-label="Delete" onClick={() => updateComponentsList(index)}>
+                  <RemoveCircleIcon className={classes.icon} />
                 </IconButton>
               </ListItem>
             );

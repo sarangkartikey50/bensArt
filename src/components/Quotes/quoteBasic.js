@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
-        data: state.applicationManager.componentsData.QuoteBasic
+        data: state.applicationManager.componentsData
     }
 }
 
@@ -31,14 +31,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const QuoteBasic = (props) => {
-    const { data } = props
+    const { data, componentIndex } = props
     const classes = useStyles()
-    if(!data) return null
+    if(!data[componentIndex]) return null
     return (
         <div>
             <Paper className={classes.paper}>
-                <Typography variant='h4' className={classes.quote}>{data.quote}</Typography>
-                <Typography className={classes.author} component='p'>- {data.author} -</Typography>
+                <Typography variant='h4' className={classes.quote}>{data[componentIndex].data.quote}</Typography>
+                <Typography className={classes.author} component='p'>- {data[componentIndex].data.author} -</Typography>
             </Paper>
         </div>
     )

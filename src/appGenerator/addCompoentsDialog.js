@@ -1,13 +1,13 @@
-import React from "react";
+import { IconButton } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { IconButton } from "@material-ui/core";
-import AddSharpIcon from "@material-ui/icons/AddSharp";
 import { makeStyles } from "@material-ui/core/styles";
+import AddSharpIcon from "@material-ui/icons/AddSharp";
+import React, { useState } from "react";
+import { ComponentsMap } from './componentsMap';
 import CustomSelect from "./customSelect";
 
 const useStyle = makeStyles(theme => ({
@@ -25,17 +25,20 @@ const useStyle = makeStyles(theme => ({
   body: {
       background: theme.surface,
       color: theme.textColor,
-      width: 'fit-content'
+      width: 'initial'
   },
   actions: {
       background: theme.surface,
       color: theme.textColor,
       width: 'auto'
-  }
+  },
 }));
 
-export default function AddComponentsDialog() {
+export default function AddComponentsDialog(props) {
   const [open, setOpen] = React.useState(false);
+  const { setComponentsList, componentsList } = props
+  const options = [{key: 'Appbar Basic', value: 'AppBar'},{key: 'Landing', value: 'Landing'},{key: 'Quote', value: 'Quote'}]
+  const [selectedComponent, setSelectedComponent] = useState(options[0].value)
   const classes = useStyle();
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,12 +46,31 @@ export default function AddComponentsDialog() {
   function handleClose() {
     setOpen(false);
   }
+  const addComponent = (name) => {
+    setComponentsList([...componentsList, name])
+  }
+  const listComponents = () => {
+    return Object.entries(ComponentsMap).filter(([key, value], index) => {
+      return value.category === selectedComponent
+    })
+    .map(([key, value], index) => {
+      value.component.props.componentIndex = value.index
+      return (
+        <div key={index}>
+          {value.component}
+          <Button color='primary' onClick={() => addComponent(key)}>Add Component to your list</Button>
+        </div>
+      )
+    })
+  }
   return (
     <div>
       <IconButton className={classes.iconButton} onClick={handleClickOpen}>
         <AddSharpIcon className={classes.icon} />
       </IconButton>
       <Dialog
+        fullWidth={true}
+        maxWidth='lg'
         open={open}
         onClose={handleClose}
         scroll="body"
@@ -56,15 +78,10 @@ export default function AddComponentsDialog() {
       >
         <DialogTitle id="scroll-dialog-title" className={classes.title}>
             <span>Add Components</span>
-            <CustomSelect name='Component' options={[{key: 'Appbar Basic', value: 'AppBarBasic'},{key: 'Landing Basic', value: 'LandingBasic'},{key: 'Quote Basic', value: 'QuoteBasic'}]} />
+            <CustomSelect name='Components' selectedComponent={selectedComponent} setSelectedComponent={setSelectedComponent} options={options} />
         </DialogTitle>
         <DialogContent className={classes.body} dividers={true}>
-          <DialogContentText className={classes.body}>
-            Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-          </DialogContentText>
+            {listComponents()}
         </DialogContent>
         <DialogActions className={classes.actions}>
           <Button onClick={handleClose} color="primary">

@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.post("/create-app", (req, res) => {
   try {
     configGenerator(req.body);
-    exec("cd src/site/ && npm start", (error, stdout, stderr) => {
+    exec("cd src/site/ && npm i && npm start", (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);
         return;
@@ -52,11 +52,12 @@ import '../style/index.css'
 import { updateComponentsData } from '../actions'
 import { connect } from 'react-redux'
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core"`;
-  config.configurations.components.forEach(component => {
-    importsConfig += `\nimport ${component.component} from '${
+  config.configurations.components.forEach((component, index) => {
+    if(!importsConfig.includes(component.component))
+      importsConfig += `\nimport ${component.component} from '${
       component.import.path
-    }'`;
-    componentsConfig += `<${component.component} />`;
+      }'`;
+    componentsConfig += `<${component.component} componentIndex={${index}} />`;
   });
   const output = `
 ${importsConfig}

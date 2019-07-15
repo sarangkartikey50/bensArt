@@ -5,7 +5,7 @@ import { ComponentsMap } from "./componentsMap";
 import { connect } from "react-redux";
 import PreviewLoader from "./previewLoader";
 const mapStateToProps = state => ({
-  componentsData: state.applicationManager.componentsData,
+  selectedComponentsData: state.applicationManager.selectedComponentsData,
   previewStatus: state.applicationManager.previewStatus
 });
 const useStyle = makeStyles(theme => ({
@@ -15,16 +15,17 @@ const useStyle = makeStyles(theme => ({
 }));
 function ComponentsContainer(props) {
   const classes = useStyle();
-  const { componentsData } = props;
-  if (!componentsData) return null;
+  const { selectedComponentsData } = props;
+  if (!selectedComponentsData) return null;
   if(props.previewStatus === 'STARTED') return <PreviewLoader />
+  console.log(selectedComponentsData)
   return (
     <div className={classes.root}>
-      {Object.entries(componentsData).map(([component, data], index) => {
+      {selectedComponentsData.map((component, index) => {
         return (
-          <div>
-            <ComponentBar name={component} />
-            {ComponentsMap[component].component}
+          <div key={index}>
+            <ComponentBar name={component.name} />
+            {ComponentsMap[component.name]['component']}
           </div>
         );
       })}

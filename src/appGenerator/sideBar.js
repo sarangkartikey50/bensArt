@@ -1,17 +1,17 @@
+import { MenuItem, MenuList } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import FormatColorFillSharpIcon from '@material-ui/icons/FormatColorFillSharp';
+import SlideShowSharpIcon from '@material-ui/icons/SlideshowSharp';
 import React, { useEffect, useState } from "react";
-import {MenuList, MenuItem, } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import AddSharpIcon from '@material-ui/icons/AddSharp'
-import FormatColorFillSharpIcon from '@material-ui/icons/FormatColorFillSharp'
-import SlideShowSharpIcon from '@material-ui/icons/SlideshowSharp'
-import SideBarComponentsList from "./sideBarComponentsList";
-import { connect } from 'react-redux'
-import { updateComponentsData, updateComponentsConfig, createApp } from '../actions'
-import { ComponentsMap } from './componentsMap'
+import { connect } from 'react-redux';
+import { createApp, updateComponentsConfig, updateComponentsData, updateSelectedComponentsData } from '../actions';
 import AddComponentsDialog from "./addCompoentsDialog";
+import { ComponentsMap } from './componentsMap';
+import SideBarComponentsList from "./sideBarComponentsList";
+import NoComponentsSelected from './noComponentsSelected';
 
 const mapStateToProps = (state) => ({
-  componentsData: state.applicationManager.componentsData,
+  selectedComponentsData: state.applicationManager.selectedComponentsData,
   componentsConfig: state.applicationManager.componentsConfig
 })
 
@@ -32,11 +32,14 @@ const useStyle = makeStyles(theme => ({
 
 function SideBar(props) {
   const classes = useStyle()
-  const [componentsList, setComponentsList] = useState(['AppBarBasic', 'QuoteBasic', 'CardContainerTestimonial'])
+  const [componentsList, setComponentsList] = useState([])
   useEffect(() => {
-    let data = {}
+    let data = []
+    let componentsData = Object.entries(ComponentsMap).map(([key, value]) => {
+      return { name: key, data: value.initData}
+    })
     const config = componentsList.map(component => {
-      data[component] = ComponentsMap[component].initData
+      data.push({ name: component, data: ComponentsMap[component].initData })
       let obj = {
         ...ComponentsMap[component],
         component
@@ -44,7 +47,8 @@ function SideBar(props) {
       delete obj.initData
       return obj
     })
-    props.updateComponentsData(data)
+    props.updateComponentsData(componentsData)
+    props.updateSelectedComponentsData(data)
     props.updateComponentsConfig(config)
   }, [componentsList])
   const showPreview = () => {
@@ -64,7 +68,7 @@ function SideBar(props) {
       configurations: {
         components: props.componentsConfig
       },
-      data: props.componentsData
+      data: props.selectedComponentsData
     }
     props.createApp(configJson)
   }
@@ -78,12 +82,12 @@ function SideBar(props) {
           <FormatColorFillSharpIcon className={classes.icon} />
         </MenuItem>
         <MenuItem>
-          <AddComponentsDialog />
+          <AddComponentsDialog componentsList={componentsList} setComponentsList={setComponentsList} />
         </MenuItem>
       </MenuList>
-      <SideBarComponentsList componentsList={componentsList} setComponentsList={setComponentsList} />
+      {componentsList.length > 0 ? <SideBarComponentsList componentsList={componentsList} setComponentsList={setComponentsList} /> : <NoComponentsSelected /> }
     </div>
   );
 }
 
-export default connect(mapStateToProps, { updateComponentsData, updateComponentsConfig, createApp })(SideBar)
+export default connect(mapStateToProps, { updateComponentsData, updateComponentsConfig, createApp, updateSelectedComponentsData })(SideBar)

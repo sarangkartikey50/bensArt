@@ -3,16 +3,16 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
-        data: state.applicationManager.componentsData.LandingBasic
+        data: state.applicationManager.componentsData
     }
 }
 
 const LandingBasic = (props) => {
-    const { data } = props
-    if(!data) return null
+    const { data, componentIndex } = props
+    if(!data[componentIndex]) return null
     return (
         <div>
-            <div style={{backgroundImage: `url('${data.backgroundImage}')`, backgroundSize: 'cover', height: '800px'}}></div>
+            <div style={{backgroundImage: `url('${data[componentIndex].data.backgroundImage}')`, backgroundSize: 'cover', height: '800px'}}></div>
         </div>
     )
 }

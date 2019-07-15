@@ -1,5 +1,13 @@
 import axios from "axios";
 
+export function updateSelectedComponentsData(payload){
+  return dispatch => {
+    dispatch({
+      type: 'UPDATE_SELECTED_COMPONENTS_DATA',
+      payload
+    })
+  }
+}
 export function updateComponentsData(data) {
   return dispatch => {
     dispatch({
@@ -17,7 +25,7 @@ export const createApp = body => dispatch => {
   dispatch({ type: "UPDATE_PREVIEW_STATUS", payload: "STARTED" });
   setTimeout(() => {
     dispatch({ type: "UPDATE_PREVIEW_STATUS", payload: "FINISHED" });
-  }, 8000);
+  }, 12000);
   axios
     .post("http://localhost:5000/create-app", body)
     .then(res => {

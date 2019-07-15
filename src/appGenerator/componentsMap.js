@@ -2,13 +2,13 @@ import React from "react";
 import AppBarBasic from "../components/AppBar/appBarBasic";
 import LandingBasic from "../components/Landing/landingBasic";
 import QuoteBasic from "../components/Quotes/quoteBasic";
-import FooterBasic from "../components/Footer/footerBasic";
 import CardContainerComplex from "../containers/cardContainerComplex";
-import CardContainerBasic from "../containers/cardContainerBasic";
 import CardContainerTestimonial from "../containers/cardContainerTestimonial";
 
 export const ComponentsMap = {
   AppBarBasic: {
+    index: 0,
+    category: 'AppBar',
     component: <AppBarBasic />,
     import: {
       path: "../components/AppBar/appBarBasic"
@@ -43,6 +43,8 @@ export const ComponentsMap = {
     }
   },
   LandingBasic: {
+    index: 1,
+    category: 'Landing',
     component: <LandingBasic />,
     import: {
       path: "../components/Landing/landingBasic"
@@ -58,6 +60,8 @@ export const ComponentsMap = {
     }
   },
   QuoteBasic: {
+    index: 2,
+    category: 'Quote',
     component: <QuoteBasic />,
     import: {
       path: "../components/Quotes/quoteBasic"
@@ -73,19 +77,9 @@ export const ComponentsMap = {
       author: "Lorem Consectur"
     }
   },
-  FooterBasic: {
-    component: <FooterBasic />,
-    import: {
-      path: "../components/Footer/footerBasic"
-    },
-    custom: false,
-    customizations: {
-      visibility: {}
-    },
-    style: {},
-    initData: {}
-  },
   CardContainerComplex: {
+    index: 3,
+    category: 'Cards',
     component: <CardContainerComplex />,
     import: {
       path: "../containers/cardContainerComplex"
@@ -182,19 +176,9 @@ export const ComponentsMap = {
       ]
     }
   },
-  CardContainerBasic: {
-    component: <CardContainerBasic />,
-    import: {
-      path: ""
-    },
-    custom: false,
-    customizations: {
-      visibility: {}
-    },
-    style: {},
-    initData: {}
-  },
   CardContainerTestimonial: {
+    index: 4,
+    category: 'Cards',
     component: <CardContainerTestimonial />,
     import: {
       path: "../containers/cardContainerTestimonial"

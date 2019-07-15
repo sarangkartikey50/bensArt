@@ -37,10 +37,9 @@ const useStyles = makeStyles(theme => ({
 export default function CustomSelect(props) {
   const classes = useStyles();
   const { name, options } = props
-  const [age, setAge] = React.useState(options[0].value);
   const [open, setOpen] = React.useState(false);
   function handleChange(event) {
-    setAge(event.target.value);
+    props.setSelectedComponent(event.target.value);
   }
 
   function handleClose() {
@@ -58,7 +57,7 @@ export default function CustomSelect(props) {
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
-          value={age}
+          value={props.selectedComponent}
           onChange={handleChange}
           className={classes.select}
           inputProps={{
@@ -66,13 +65,8 @@ export default function CustomSelect(props) {
               icon: classes.selectIcon
             }
           }}
-          menuProps={{
-            classes: {
-              root: classes.selectInput
-            }
-          }}
         >
-          {options.map((option, key) => (<MenuItem value={option.value}>{option.key}</MenuItem>))}
+          {options.map((option, index) => (<MenuItem key={index} value={option.value}>{option.key}</MenuItem>))}
         </Select>
       </FormControl>
   );
