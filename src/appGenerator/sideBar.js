@@ -8,6 +8,7 @@ import SideBarComponentsList from "./sideBarComponentsList";
 import { connect } from 'react-redux'
 import { updateComponentsData, updateComponentsConfig, createApp } from '../actions'
 import { ComponentsMap } from './componentsMap'
+import AddComponentsDialog from "./addCompoentsDialog";
 
 const mapStateToProps = (state) => ({
   componentsData: state.applicationManager.componentsData,
@@ -77,7 +78,7 @@ function SideBar(props) {
           <FormatColorFillSharpIcon className={classes.icon} />
         </MenuItem>
         <MenuItem>
-          <AddSharpIcon className={classes.icon} />
+          <AddComponentsDialog />
         </MenuItem>
       </MenuList>
       <SideBarComponentsList componentsList={componentsList} setComponentsList={setComponentsList} />

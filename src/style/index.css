@@ -35,3 +35,7 @@ code {
   left: 40%;
   color: #4b8dec;
 }
+
+.MuiTypography-h6{
+  font-family: GoogleSans !important;
+}

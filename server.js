@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const exec = require('child_process').exec;
+const exec = require("child_process").exec;
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(
@@ -12,33 +12,33 @@ app.use(
     extended: true
   })
 );
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, "build")));
 app.post("/create-app", (req, res) => {
-    try{
-      configGenerator(req.body)
-      exec('lsof -ti:7000 | xargs kill && cd src/site/ && npm start', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`);
-            return;
-          }
-          console.log(stdout)
-          console.log(stderr)
-          res.send({
-            status: 'success',
-            stdout, stderr
-
-        })
-      })
-    } catch(e){
-        console.log('There was some error creating configJson', e)
+  try {
+    configGenerator(req.body);
+    exec("cd src/site/ && npm start", (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      console.log(stdout);
+      console.log(stderr);
       res.send({
-          status: 'failure',
-          error: e
-      })
-    }
-  });
+        status: "success",
+        stdout,
+        stderr
+      });
+    });
+  } catch (e) {
+    console.log("There was some error creating configJson", e);
+    res.send({
+      status: "failure",
+      error: e
+    });
+  }
+});
 app.get("*", (req, res) => {
-  res.sendFile("index.html", {root: 'build/'});
+  res.sendFile("index.html", { root: "build/" });
 });
 app.listen(5000);
 console.log("server started @ http://localhost:5000");
@@ -86,12 +86,16 @@ export default connect(null, { updateComponentsData })(SiteApp)
     if (err) throw err;
     console.log("config created!");
   });
-  fs.writeFile('./config.json', JSON.stringify(config, null, 2), err => {
-      if (err) throw err
-      console.log("config written successfully!")
-  })
-  fs.writeFile('./src/site/.env', `SKIP_PREFLIGHT_CHECK=true \nPORT=7000`, err => {
-    if (err) throw err
-    console.log('env set successfully!')
-  })
+  fs.writeFile("./config.json", JSON.stringify(config, null, 2), err => {
+    if (err) throw err;
+    console.log("config written successfully!");
+  });
+  fs.writeFile(
+    "./src/site/.env",
+    `SKIP_PREFLIGHT_CHECK=true \nPORT=7000`,
+    err => {
+      if (err) throw err;
+      console.log("env set successfully!");
+    }
+  );
 };
