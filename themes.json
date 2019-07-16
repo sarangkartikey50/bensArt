@@ -14,10 +14,10 @@
         "surface": "#fff",
         "textColor": "#333",
         "primary": "#6400e0",
-        "searchColor": "#fafafa",
+        "searchColor": "#f6f6f6",
         "secondary": "#333",
         "boxShadow": "none",
         "border": "1px solid #efefef",
-        "componentBarBackground": "#fafafa"
+        "componentBarBackground": "#f6f6f6"
     }
 }

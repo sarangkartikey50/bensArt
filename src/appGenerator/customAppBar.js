@@ -1,14 +1,17 @@
-import React from "react";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { IconButton, Switch } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
+import Avatar from "@material-ui/core/Avatar";
+import InputBase from "@material-ui/core/InputBase";
+import { fade, makeStyles, withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
+import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
 import SearchIcon from "@material-ui/icons/Search";
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded'
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import Avatar from "@material-ui/core/Avatar";
-import { IconButton } from "@material-ui/core";
+const mapDispatchToProps = (dispatch) => ({
+  updateTheme: payload => dispatch({ type: 'UPDATE_IS_DARK_THEME', payload })
+})
 const useStyles = makeStyles(theme => ({
   avatar: {
     margin: 10,
@@ -23,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: .1,
+    flexGrow: 0.1,
     fontWeight: "400",
     display: "flex",
     alignItems: "center"
@@ -31,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     background: theme.background,
     color: theme.textColor,
-    boxShadow: "none",
+    boxShadow: "none"
   },
   button: {
     textTransform: "capitalize",
@@ -49,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
     backgroundColor: fade(theme.searchColor, 1),
     "&:hover": {
-      backgroundColor: fade(theme.searchColor, 0.75)
+      backgroundColor: fade(theme.searchColor, 0.5)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -83,15 +86,50 @@ const useStyles = makeStyles(theme => ({
     color: theme.textColor
   }
 }));
+const ThemeToggle = withStyles({
+  switchBase: {
+    color: '#551D82',
+    '&$checked': {
+      color: '#551D82'
+    },
+    '&$checked + $track': {
+      backgroundColor: '#551D82',
+    }
+  },
+  track: {
+    backgroundColor: '#551D82'
+  },
+  checked: {
+    color: '#551D82'
+  }
+})(Switch);
 function CustomAppBar(props) {
   const classes = useStyles();
+  const [themeToggle, setThemeToggle] = useState(false)
+  const handleThemeToggleChange = event => {
+    setThemeToggle(event.target.checked)
+    props.updateTheme(event.target.checked)
+  }
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            
-<svg aria-hidden="true" className={classes.logo} focusable="false" data-prefix="fas" data-icon="meteor" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M491.2.7C452.5 12.3 379.4 35 303.5 62c-2.1-7-4-13.5-5.6-18.6-3-9.7-13.9-14.2-22.9-9.5C232.6 56 122.2 116.5 60.6 176.4c-1.1 1-2.5 2-3.5 3C19 217.4 0 267.3 0 317.2 0 367 19 416.9 57 455c38 38 87.9 57.1 137.8 57 49.9 0 99.8-19 137.9-57.1 1-1 2-2.4 3-3.5 59.8-61.6 120.4-172.1 142.5-214.4 4.7-9 .2-19.9-9.5-22.9-5.2-1.6-11.6-3.5-18.6-5.6 27-76 49.7-149 61.3-187.7C515 8.4 503.6-3 491.2.7zM192 448c-70.7 0-128-57.3-128-128s57.3-128 128-128 128 57.3 128 128-57.3 128-128 128zm-32-192c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm48 96c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16z"></path></svg>
+            <svg
+              aria-hidden="true"
+              className={classes.logo}
+              focusable="false"
+              data-prefix="fas"
+              data-icon="meteor"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                fill="currentColor"
+                d="M491.2.7C452.5 12.3 379.4 35 303.5 62c-2.1-7-4-13.5-5.6-18.6-3-9.7-13.9-14.2-22.9-9.5C232.6 56 122.2 116.5 60.6 176.4c-1.1 1-2.5 2-3.5 3C19 217.4 0 267.3 0 317.2 0 367 19 416.9 57 455c38 38 87.9 57.1 137.8 57 49.9 0 99.8-19 137.9-57.1 1-1 2-2.4 3-3.5 59.8-61.6 120.4-172.1 142.5-214.4 4.7-9 .2-19.9-9.5-22.9-5.2-1.6-11.6-3.5-18.6-5.6 27-76 49.7-149 61.3-187.7C515 8.4 503.6-3 491.2.7zM192 448c-70.7 0-128-57.3-128-128s57.3-128 128-128 128 57.3 128 128-57.3 128-128 128zm-32-192c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm48 96c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16z"
+              />
+            </svg>
             <span className={classes.titleText}>bensArt</span>
           </Typography>
           <div className={classes.search}>
@@ -108,6 +146,11 @@ function CustomAppBar(props) {
             />
           </div>
           <div className={classes.root} />
+          <ThemeToggle
+            checked={themeToggle}
+            value="themeToggle"
+            onChange={handleThemeToggleChange}
+          />
           <Avatar
             src="https://cdn.dribbble.com/users/1324146/screenshots/5819188/2_2x.jpg"
             className={classes.avatar}
@@ -123,4 +166,4 @@ function CustomAppBar(props) {
     </div>
   );
 }
-export default connect()(CustomAppBar);
+export default connect(null, mapDispatchToProps)(CustomAppBar);

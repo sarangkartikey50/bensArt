@@ -77,6 +77,19 @@
           "visibility": {}
         },
         "style": {}
+      },
+      {
+        "index": 3,
+        "category": "Cards",
+        "component": "CardContainerComplex",
+        "import": {
+          "path": "../containers/cardContainerComplex"
+        },
+        "custom": false,
+        "customizations": {
+          "visibility": {}
+        },
+        "style": {}
       }
     ]
   },
@@ -149,6 +162,87 @@
       "name": "LandingBasic",
       "data": {
         "backgroundImage": "https://cdn.dribbble.com/users/416610/screenshots/6409763/img3_4x.jpg"
+      }
+    },
+    {
+      "name": "CardContainerComplex",
+      "data": {
+        "header": "Consectur",
+        "import": {
+          "path": ""
+        },
+        "custom": false,
+        "customizations": {
+          "visibility": {}
+        },
+        "style": {},
+        "items": [
+          {
+            "cardImage": "https://upload.wikimedia.org/wikipedia/commons/3/36/Leh_Palace_2011.jpg",
+            "cardHeader": {
+              "header": "elementum magna",
+              "subHeader": "",
+              "avatar": ""
+            },
+            "cardBody": "vel placerat felis nunc et leo. Nulla facilisi. Mauris sollicitudin nec risus feugiat pulvinar. Nam non consectetur mi, in mattis orci.",
+            "cardAction": {
+              "name": "Learn More",
+              "url": "#"
+            }
+          },
+          {
+            "cardImage": "http://ttnotes.com/images/shanti-stupa-leh.jpg",
+            "cardHeader": {
+              "header": "Interdum et",
+              "subHeader": "",
+              "avatar": ""
+            },
+            "cardBody": "ed sit amet erat sed nibh dictum malesuada id sollicitudin sapien. Fusce neque ligula, rhoncus nec pulvinar vitae, commodo eu ipsum.",
+            "cardAction": {
+              "name": "Learn More",
+              "url": "#"
+            }
+          },
+          {
+            "cardImage": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Hall_of_Fame_Museum%2C_Leh.jpg",
+            "cardHeader": {
+              "header": "Curabitur vitae",
+              "subHeader": "",
+              "avatar": ""
+            },
+            "cardBody": "Curabitur vitae leo aliquet, dictum arcu at, porta sapien. Curabitur facilisis quam sollicitudin sapien porttitor sagittis.",
+            "cardAction": {
+              "name": "Learn More",
+              "url": "#"
+            }
+          },
+          {
+            "cardImage": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Pangong_Tso_2.jpg",
+            "cardHeader": {
+              "header": "Maecenas vel",
+              "subHeader": "",
+              "avatar": ""
+            },
+            "cardBody": "Maecenas vel pretium velit. Proin purus orci, mattis ac congue malesuada, efficitur eget elit. Nunc auctor mattis magna, sit amet tincidunt turpis lobortis id.",
+            "cardAction": {
+              "name": "Learn More",
+              "url": "#"
+            }
+          },
+          {
+            "cardImage": "http://i.imgur.com/9e0aCiC.jpg",
+            "cardHeader": {
+              "header": "lobortis tincidunt",
+              "subHeader": "",
+              "avatar": ""
+            },
+            "cardBody": "In lobortis tincidunt lectus eu malesuada. Vestibulum molestie nisl eu convallis auctor. Nullam tincidunt pretium eros, eget pharetra ex convallis vel.",
+            "cardAction": {
+              "name": "Learn More",
+              "url": "#"
+            }
+          }
+        ]
       }
     }
   ]
