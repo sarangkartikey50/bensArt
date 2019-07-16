@@ -2,14 +2,14 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import React from "react";
 
-const ColorLinearProgress = withStyles({
+const ColorLinearProgress = withStyles(theme => ({
   colorPrimary: {
-    backgroundColor: '#1d1d1d',
+    backgroundColor: theme.background,
   },
   barColorPrimary: {
     backgroundColor: '#551D82',
   },
-})(LinearProgress);
+}))(LinearProgress);
 
 const useStyle = makeStyles(theme =>({
     video: {

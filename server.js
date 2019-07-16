@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.post("/create-app", (req, res) => {
   try {
     configGenerator(req.body);
-    exec("cd src/site/ && npm start", (error, stdout, stderr) => {
+    exec("lsof -ti:7000 | xargs kill && cd src/site/ && npm start", (error, stdout, stderr) => {
       if (error) {
         console.error(`exec error: ${error}`);
       }
@@ -66,7 +66,7 @@ const SiteApp = (props) => {
     })
     return (
         <MuiThemeProvider theme={createMuiTheme(${JSON.stringify(theme)})}>
-            <div className='App' style={{background: '${theme.background}'}}>
+            <div className='App' style={{background: '${theme.background}', minHeight: '100vh'}}>
                 ${componentsConfig}
             </div>
         </MuiThemeProvider>
