@@ -53,6 +53,19 @@
         "style": {}
       },
       {
+        "index": 4,
+        "category": "Cards",
+        "component": "CardContainerTestimonial",
+        "import": {
+          "path": "../containers/cardContainerTestimonial"
+        },
+        "custom": false,
+        "customizations": {
+          "visibility": {}
+        },
+        "style": {}
+      },
+      {
         "index": 1,
         "category": "Landing",
         "component": "LandingBasic",
@@ -96,7 +109,7 @@
     {
       "name": "LandingBasic",
       "data": {
-        "backgroundImage": "https://cdn.dribbble.com/users/1661487/screenshots/5681314/_____20181211113438_2x.jpg"
+        "backgroundImage": "https://cdn.dribbble.com/users/416610/screenshots/6409763/img3_4x.jpg"
       }
     },
     {
@@ -107,9 +120,35 @@
       }
     },
     {
+      "name": "CardContainerTestimonial",
+      "data": {
+        "header": "Testimonial",
+        "items": [
+          {
+            "avatar": "https://cdn.dribbble.com/users/2009763/screenshots/4304250/joel_signature.gif",
+            "name": "Maecenas",
+            "body": "",
+            "gradient": "https://htmlcolors.com/gradients-images/34-asana-color-gradient.jpg"
+          },
+          {
+            "avatar": "https://cdn.dribbble.com/users/1418633/screenshots/5106121/hi-dribbble-studiotale.gif",
+            "name": "Augue Magna",
+            "body": "",
+            "gradient": "https://htmlcolors.com/gradients-images/34-asana-color-gradient.jpg"
+          },
+          {
+            "avatar": "https://cdn.dribbble.com/users/1324146/screenshots/5819188/2_4x.jpg",
+            "name": "Rutrum Vitae",
+            "body": "",
+            "gradient": "https://htmlcolors.com/gradients-images/34-asana-color-gradient.jpg"
+          }
+        ]
+      }
+    },
+    {
       "name": "LandingBasic",
       "data": {
-        "backgroundImage": "https://cdn.dribbble.com/users/1661487/screenshots/5681314/_____20181211113438_2x.jpg"
+        "backgroundImage": "https://cdn.dribbble.com/users/416610/screenshots/6409763/img3_4x.jpg"
       }
     }
   ]

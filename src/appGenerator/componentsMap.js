@@ -56,7 +56,7 @@ export const ComponentsMap = {
     style: {},
     initData: {
       backgroundImage:
-        "https://cdn.dribbble.com/users/1661487/screenshots/5681314/_____20181211113438_2x.jpg"
+        "https://cdn.dribbble.com/users/416610/screenshots/6409763/img3_4x.jpg"
     }
   },
   QuoteBasic: {

@@ -32,12 +32,15 @@ const useStyle = makeStyles(theme => ({
       color: theme.textColor,
       width: 'auto'
   },
+  button: {
+    color: theme.textColor
+  }
 }));
 
 export default function AddComponentsDialog(props) {
   const [open, setOpen] = React.useState(false);
   const { setComponentsList, componentsList } = props
-  const options = [{key: 'Appbar Basic', value: 'AppBar'},{key: 'Landing', value: 'Landing'},{key: 'Quote', value: 'Quote'}]
+  const options = [{key: 'Appbar', value: 'AppBar'},{key: 'Landing', value: 'Landing'},{key: 'Quote', value: 'Quote'}, {key: 'Cards', value: 'Cards'}]
   const [selectedComponent, setSelectedComponent] = useState(options[0].value)
   const classes = useStyle();
   const handleClickOpen = () => {
@@ -84,7 +87,7 @@ export default function AddComponentsDialog(props) {
             {listComponents()}
         </DialogContent>
         <DialogActions className={classes.actions}>
-          <Button onClick={handleClose} color="primary">
+          <Button className={classes.button} onClick={handleClose}>
             Close
           </Button>
         </DialogActions>

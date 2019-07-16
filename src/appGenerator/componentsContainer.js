@@ -17,9 +17,9 @@ function ComponentsContainer(props) {
   const classes = useStyle();
   const { selectedComponentsData } = props;
   if (!selectedComponentsData) return null;
-  if(props.previewStatus === 'STARTED') return <PreviewLoader />
-  console.log(selectedComponentsData)
   return (
+    <div>
+    { props.previewStatus === 'STARTED' ? <PreviewLoader /> : null }
     <div className={classes.root}>
       {selectedComponentsData.map((component, index) => {
         return (
@@ -29,6 +29,7 @@ function ComponentsContainer(props) {
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

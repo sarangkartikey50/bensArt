@@ -12,7 +12,7 @@ const LandingBasic = (props) => {
     if(!data[componentIndex]) return null
     return (
         <div>
-            <div style={{backgroundImage: `url('${data[componentIndex].data.backgroundImage}')`, backgroundSize: 'cover', height: '800px'}}></div>
+            <div style={{backgroundImage: `url('${data[componentIndex].data.backgroundImage}')`, backgroundSize: 'cover', height: '500px'}}></div>
         </div>
     )
 }

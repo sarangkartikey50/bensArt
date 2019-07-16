@@ -23,9 +23,9 @@ export const updateComponentsConfig = payload => dispatch =>
   });
 export const createApp = body => dispatch => {
   dispatch({ type: "UPDATE_PREVIEW_STATUS", payload: "STARTED" });
-  setTimeout(() => {
-    dispatch({ type: "UPDATE_PREVIEW_STATUS", payload: "FINISHED" });
-  }, 12000);
+  // setTimeout(() => {
+  //   dispatch({ type: "UPDATE_PREVIEW_STATUS", payload: "FINISHED" });
+  // }, 12000);
   axios
     .post("http://localhost:5000/create-app", body)
     .then(res => {
