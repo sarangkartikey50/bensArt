@@ -13,3 +13,19 @@ npm install
 ### Usage
 
 ![Demo](https://lh3.googleusercontent.com/hkUxCV2v3NRws7IcZbshFB94yVTBioVqIu3HZhUMzAm36cjRJ0GgH1oUax3KZAzp1cVrWd6rCEJH7sct8tA33B4SFpbgFeF157aEX8pkRfB374qg5VSWrgd5uWlPlsaKMID1uUL9zKbmETZ2vsUweK9KVxHEAg3vr6Bsdlo3lo7YGVwkdKohwWG9eoyWFpwVKFkvJrwj1HikPZaZRy0ERgJRHWdF2PzWaUgqYK1yMbwhHtfLjOghICC6xk43YRFpwmi3WGURDLNOCZOzGTZX0biIjOr1QWEiI9z4GRc4QXUsH463-Vbgs0csbYVVHbhQKSq1Gy7DIkPvIxJgoJhJ3DtRa3clQ1KIYo1jRVXAKxQD7CQfDtv-IJOAibr3M_hgkb9KHfBooSvxBiBtst2d-qQUAU_SwDkg4nLpiFVypG7LIA0gmTENG35Uw9c7f0QOaFBJhcYN2gtDlSq9pI1Hj2BDY768E-o1MOcQ_J4hEUgBpb_W_ZDI2oSPQLjAe3xa338VMAsyDkf_C2vWanDqbrI_oZ4L8T5tPN3Aq25NgP711Kk95m21JsAhKcFcuhvoKu1d12RfrSfkULZnBYCTQBhW8YlgYpIR8tXA93ab76Vgz5TjIZSQmtNFyj0zQXI8aXP72KmD4qUY09v9x_LO=w1440-h820)
+
+
+1. Select a component by pressing the + (add) icon.
+2. Select type of the component which you want to select from the navbar.
+3. After selecting you drag and drop to rearrange your components.
+4. you can also customize your component style by clicking on the equilizer & paint icon.
+5. To preview you can click on the slideshow icon.
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Please make sure to update tests as appropriate.
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
